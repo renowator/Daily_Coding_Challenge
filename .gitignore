@@ -107,5 +107,6 @@ venv.bak/
 
 .DS_Store
 
-.class
-.o
+*$.class
+*$.o
+.ideas/
