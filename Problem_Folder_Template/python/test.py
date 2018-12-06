@@ -3,13 +3,24 @@ from types import *
 
 
 class Test:
-    def __init__(self):
+    def __init__(self, problem):
         self.test_result = []
         self.grade = ""
+        self.pr = problem
 
-    def test_template(self, prob):
-        self.sample_test1(prob)
-        self.sample_test2(prob)
+    def run_tests(self, i_o_dict):
+        try:
+            for in_val in i_o_dict:
+                assert self.pr.solve(in_val) == i_o_dict[in_val], "Error"
+                self.test_result.append(True)
+        except(AssertionError):
+            self.test_result.append(False)
+        return self.test_result
+
+    def test_run(self, i_o_dict):
+        self.test_result = self.run_tests(i_o_dict)
+        if type(i_o_dict) is None:
+            return None
         tests_passed = 0
         for i in range(len(self.test_result)):
             if test.test_result[i]:
@@ -18,30 +29,18 @@ class Test:
         self.grade += score + "%"
         return "Number of tests passed: {}\nNumber of tests failed: {}\nScore: {}".format(tests_passed, len(self.test_result) - tests_passed, self.grade)
 
-    def sample_test1(self, prob):
-        try:
-            assert type(prob.problem_template([" "])) is StringType, "Not a valid problem output: %s" % problem
-            print("sample_test1:PASSED")
-            self.test_result.append(True)
-        except AssertionError as e:
-            print (e.args[0])
-            print("sample_test1:FAILED")
-            self.test_result.append(False)
 
-    def sample_test2(self,prob):
-        try:
-            assert prob.problem_template([]) == "hello world: ", "The derived result does not match: '%s' vs. '%s'" % (prob.problem_template([]), "hello world: ")
-            assert prob.problem_template(["b"]) == "hello world: b", "The derived result does not match: '%s' vs. '%s'" % (prob.problem_template([""]), "hello world: b")
-            assert prob.problem_template(["a"]) == "hello world: a", "The derived result does not match: '%s' vs. '%s'" % (prob.problem_template(["a"]), "hello world: a")
-            print("sample_test2:PASSED")
-            self.test_result.append(True)
-        except AssertionError as e:
-            print (e.args[0])
-            print("sample_test2:FAILED")
-            self.test_result.append(False)
-
+def solution( args = None):
+    if args is None:
+        return None
+    retstr = "hello world: "
+    for i in range(len(args)):
+        retstr += args[i]
+    return retstr
 
 if __name__ == "__main__":
-    test = Test()
     prob = problem.Problem()
-    print(test.test_template(prob))
+    prob.getSolution(solution)
+    test = Test(prob)
+    i_o_vals = {("!","b"):"hello world: !b", "ad da": "hello world: ad da", ("1","2","3"):"hello world: 123"}
+    print(test.test_run(i_o_vals))

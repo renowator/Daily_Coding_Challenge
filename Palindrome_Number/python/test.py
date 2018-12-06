@@ -77,10 +77,10 @@ class Test:
 def generate_palindrome(base):
     length = random.randint(1, 5)
     pal = 0
-    for i in range(length // 2):
+    for i in range(length // 2):  
         # get random number within base
         num = random.randint(1, base - 1)
-        pal += (base ** (i)) * num
+        pal += (base ** i) * num
         pal += (base ** (length - 1 - i)) * num
     return pal
 

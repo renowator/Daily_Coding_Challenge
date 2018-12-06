@@ -1,11 +1,14 @@
 class Problem:
-    def problem_template(self, args):
-        return self.hello_world(args)
+    def __init__(self):
+        self.fn = lambda x: None
 
-    def hello_world(self, args):
-        retstr = "hello world: "
-        for i in range(len(args)):
-            retstr += args[i]
-        return retstr
+    def getSolution(self, solution):
+        self.fn = solution
+
+    def solve(self, args):
+        return self.fn(args)
+
+
+
 
 
