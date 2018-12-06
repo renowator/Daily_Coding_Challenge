@@ -4,30 +4,37 @@
 
 # Problem background
 
-  Put problem background information here
+  Palindromic numbers are different in various base cases. This program can consider a possible base and determine whether the number is a palindrome in this base.
 
 # Propsed algorithm
 
-  Put the algorithm used for the problem here
+  Get all the "digits" in this base from the number inside a list
+
+  Loop through the list until the middle is reached and compare the digits from theith back position of the list to ith front position of the list
+
+  If one of the comparsions fails return false
+
+  return true
 
 ## Time Complexity
 
-  Put the proposed time complexity here
+   O(n)
 
 # Languages used
 
-+ List all the languages in which solution was implemnted
++ Python
 
 # Test cases
 
 ## Required Tests
 
-+ List all test cases to be used
++ Test known palindromic numbers in various bases
++ Test known non-palindromic numbers in various bases
 
 ## Implemented tests
-### Programming Language
+### Python
 
-  - List all test cases implemented 
+  - Palindromic number generator was implemented to test for known palindromic numbers
 
 # Time complexity results
 
