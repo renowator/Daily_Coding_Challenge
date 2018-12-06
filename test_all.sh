@@ -2,5 +2,5 @@
 
 for fol in $PWD/*
     do
-    [ -d $fol ] && cd $fol && ./run_tests.sh
+    [ -d $fol ] && echo $fol problem: && cd $fol && ./run_tests.sh
 done

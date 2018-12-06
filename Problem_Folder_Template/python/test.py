@@ -37,7 +37,7 @@ class Test:
             self.test_result.append(True)
         except AssertionError as e:
             print (e.args[0])
-            print("sample_test1:FAILED")
+            print("sample_test2:FAILED")
             self.test_result.append(False)
 
 
