@@ -1,4 +1,7 @@
-from util import Problem, Test
+import sys
+sys.path.append('../..')
+
+from util import *
 from solution import solution
 
 prob = Problem()
